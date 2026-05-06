@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import requests
 from datetime import datetime
+import plotly.express as px   # ← This was missing
 
 st.set_page_config(page_title="Bijapur CCR Dashboard", layout="wide", page_icon="🌍")
 
@@ -39,45 +40,41 @@ st.dataframe(pd.DataFrame(data), use_container_width=True)
 # ================== NPCCHH ADVISORIES ==================
 st.subheader("🚨 NPCCHH Early Warnings & Child Health Advisories")
 
-with st.expander("🔥 Heatwave Advisory (NPCCHH / MoHFW Heat Action Plan)"):
+with st.expander("🔥 Heatwave Advisory (NPCCHH / MoHFW)"):
     st.markdown("""
-    - Avoid outdoor activities for children between **12 PM – 4 PM**
-    - Ensure frequent hydration with **ORS / lemon water**
-    - Watch for signs of heat exhaustion: dizziness, nausea, rapid breathing
-    - Use wet sponging and keep children in shaded areas
-    - Reschedule school/Anganwadi activities before 11 AM or after 4 PM
+    - Avoid outdoor activities for children between **12 PM – 4 PM**  
+    - Ensure frequent hydration with **ORS / lemon water**  
+    - Watch for signs of heat exhaustion: dizziness, nausea, rapid breathing  
+    - Use wet sponging and keep children in shaded areas  
     """)
 
 with st.expander("🦟 Malaria & Vector-Borne Diseases"):
     st.markdown("""
-    - Clear stagnant water around homes, schools & Anganwadi centers
-    - Use **insecticide-treated mosquito nets** for children
-    - Wear full-sleeve clothes during evening hours
+    - Clear stagnant water around homes, schools & Anganwadi centers  
+    - Use **insecticide-treated mosquito nets** for children  
+    - Wear full-sleeve clothes during evening hours  
     - Seek immediate medical care if child has **fever with chills**
     """)
 
 with st.expander("🌫️ Air Quality & Respiratory Health"):
     st.markdown("""
-    - Keep children indoors when AQI is Poor or Very Poor
-    - Use wet mopping instead of sweeping
-    - Children with asthma should wear masks outdoors
-    - Monitor symptoms: persistent cough, wheezing, difficulty breathing
+    - Keep children indoors when AQI is Poor or Very Poor  
+    - Use wet mopping instead of sweeping  
+    - Children with asthma should wear masks outdoors  
     """)
 
 with st.expander("🌧️ Heavy Rain / Flood Advisory"):
     st.markdown("""
-    - Store clean drinking water and emergency medicines
-    - Boil water before drinking to prevent diarrhea & cholera
-    - Avoid playing near water bodies or low-lying areas
-    - Identify safe elevated locations in the village
+    - Store clean drinking water and emergency medicines  
+    - Boil water before drinking  
+    - Avoid playing near water bodies  
     """)
 
 with st.expander("🥗 Nutrition & General Child Protection"):
     st.markdown("""
-    - Climate stress increases malnutrition risk — prioritize nutritious meals
-    - Continue breastfeeding for infants
-    - Maintain regular vaccination schedule
-    - Provide emotional support — extreme weather can cause anxiety in children
+    - Prioritize nutritious meals (climate stress increases malnutrition)  
+    - Continue breastfeeding for infants  
+    - Maintain vaccination schedule  
     """)
 
 # ================== MAP ==================
@@ -89,7 +86,8 @@ fig = px.scatter_mapbox(
         "Risk": ["Very High", "High", "High", "Very High"]
     }),
     lat="lat", lon="lon", color="Risk", zoom=9, height=500,
-    mapbox_style="open-street-map"
+    mapbox_style="open-street-map",
+    title="High Vulnerability Areas in Bijapur"
 )
 st.plotly_chart(fig, use_container_width=True)
 
