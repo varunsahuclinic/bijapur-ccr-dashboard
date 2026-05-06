@@ -3,7 +3,7 @@
 **Open Source Digital Public Good** developed for **UNICEF Venture Fund - Climate Ventures x Health Call**.
 
 ### Live Dashboard
-[🔗 Open Live Dashboard](https://your-app-name.streamlit.app) *(add link after deployment)*
+[🔗 Open Live Dashboard](https://your-app-name.streamlit.app) *(https://bijapur-ccr-dashboard-ns8aokbwq6ja6ujyos4ard.streamlit.app/))*
 
 ### Features
 - Real-time weather data
